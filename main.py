@@ -1,6 +1,9 @@
 # Metodo de Jacobi
 
 # pedir tamaño del sistema
+import math
+
+
 n = int(input("Numero de variables: "))
 
 # matriz de coeficientes
@@ -10,13 +13,10 @@ for i in range(n):
     fila = list(map(float, input().split()))
     A.append(fila)
 
-# vector de resultados
 b = list(map(float, input("Ingrese el vector de resultados: ").split()))
 
-# valores iniciales
 x = list(map(float, input("Ingrese los valores iniciales: ").split()))
 
-# tolerancia
 Di = float(input("Ingrese la tolerancia: "))
 
 error = 1
@@ -35,7 +35,7 @@ while error > Di:
         
         x_new[i] = (b[i] - suma) / A[i][i]
 
-    error = max(abs(x_new[i] - x[i]) for i in range(n))
+    error = math.sqrt(sum((x_new[i] - x[i])**2  for i in range(n)))
 
     iteracion += 1
 
